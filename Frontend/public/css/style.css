@@ -1,74 +1,168 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: #212529;
+  color: white;
+  width: 250px;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar a {
+  color: white;
+  /* Default text color */
+  text-decoration: none;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #465869;
+  /* Hover background */
+  color: white;
+  /* Ensure text remains white */
+}
+
+.sidebar a.active {
+  background-color: #565d69;
+  /* Active link background */
+  color: white;
+  /* Active link text color */
+}
+
+
+.sidebar a span {
+  margin-left: 10px;
+}
+
+.sidebar.collapsed a span {
+  display: none;
+}
+
+.sidebar h5 {
+  padding: 15px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed h5 {
+  display: none;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+
+
+
+.welcome-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* Đảm bảo toàn bộ phần tử chiếm chiều cao của cửa sổ */
+  background-image: url(./img/home.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.welcome-text h1 {
+  font-size: 6rem;
+  /* Tăng kích thước chữ */
+  color: #343a40;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3),
+    0px 0px 20px rgba(255, 255, 255, 0.5),
+    0px 0px 30px rgba(255, 255, 255, 0.3);
+  animation: textGlow 1.5s ease-in-out infinite,
+    slideIn 1s ease-out;
+}
+
+.university-name {
+  font-size: 3rem;
+  /* Làm chữ "Đại học Quốc tế Hồng Bàng" to hơn */
+  color: #ca1808;
+  font-weight: bold;
+  margin-top: 20px;
+  text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2),
+    0px 0px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Các hiệu ứng sẵn có */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .dashboard {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 200px 1fr;
-    grid-template-areas: 
-      "header header"
-      "sidebar content"
-      "footer footer";
-    height: 100vh;
+
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .header {
-    grid-area: header;
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    text-align: center;
+}
+
+@keyframes textGlow {
+
+  0%,
+  100% {
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3),
+      0px 0px 20px rgba(255, 255, 255, 0.5),
+      0px 0px 30px rgba(255, 255, 255, 0.3);
   }
-  
-  .sidebar {
-    grid-area: sidebar;
-    background-color: #333;
-    color: white;
-    padding: 20px;
+
+  50% {
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3),
+      0px 0px 30px rgba(255, 255, 255, 0.8),
+      0px 0px 50px rgba(255, 255, 255, 0.5);
   }
-  
-  .sidebar ul {
-    list-style-type: none;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  .sidebar ul li {
-    margin: 15px 0;
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .content {
-    grid-area: content;
-    padding: 20px;
-    background-color: #f1f1f1;
-  }
-  
-  .stats-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-  
-  .box {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-  }
-  
-  .footer {
-    grid-area: footer;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
+}
   

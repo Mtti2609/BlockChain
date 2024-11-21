@@ -4,8 +4,11 @@ import { PATHS } from "../Constant/pathnames";
 
 function Sidebar () {
     return(
+        
         <aside className="sidebar">
+            
             <ul>
+                
                 <li>
                     <NavLink to={PATHS.DASHBOARD}>
 										Dashboard
